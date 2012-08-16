@@ -1,11 +1,12 @@
 /**
 *
 */
-class document extends Object
+class DCDocument extends Object
 {
     Map<String,Dynamic> _data;
 
-    document ([String id]) {
+    DCDocument ([String id])
+    {
       _data = new Map<String,Dynamic>();
       if(id != null) {
         this["_id"] = id;
@@ -15,14 +16,15 @@ class document extends Object
       }
     }
 
-    static document fromJSON (String jsonString)
+    static DCDocument fromJSON (String jsonString)
     {
-      document doc = new document();
+      var doc = new DCDocument();
       doc._data = JSON.parse(jsonString);
       return doc;
     }
 
-    noSuchMethod(String function_name, List args) {
+    noSuchMethod(String function_name, List args)
+    {
       if (args.length == 0 && function_name.startsWith("get:"))
       {
         var property = function_name.replaceFirst("get:", "");
