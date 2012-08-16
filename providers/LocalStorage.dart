@@ -3,9 +3,6 @@
 #import('dart:json');
 #import('../DCache.dart');
 
-/**
-*
-*/
 class LocalStorageProvider implements DCProvider
 {
     Storage _storage;
@@ -14,11 +11,8 @@ class LocalStorageProvider implements DCProvider
     LocalStorageProvider (Window window, [bool isIgnorant])
     {
         this._storage = window.localStorage;
-        if (isIgnorant != null) {
-          this.ignorant = isIgnorant;
-        }
+        this.ignorant = (isIgnorant != null) ? isIgnorant : false;
     }
-
 
     String _gns (String db, [String coll, String key])
     {
@@ -69,6 +63,11 @@ class LocalStorageProvider implements DCProvider
         return DCDocument.fromJSON(this._storage[this._gns(db,coll,key)]);
     }
 
+    Collection<DCDocument> query (String db, String coll, String queryString)
+    {
+        throw new NotImplementedException();
+    }
+
     void setItem (String db, String coll, DCDocument doc)
     {
         this._storage[this._gns(db,coll,doc["_id"])] = doc.toString();
@@ -84,10 +83,6 @@ class LocalStorageProvider implements DCProvider
         return this._storage.containsKey(this._gns(db,coll,key));
     }
 
-    /**
-    * Removes all data associated with a given collection name.
-    * ---
-    */
     void removeCollection (String db, String coll)
     {
         var ns = this._gns(db, coll);
@@ -99,10 +94,6 @@ class LocalStorageProvider implements DCProvider
         });
     }
 
-    /**
-    * Removes all data associated with a given database name.
-    * ---
-    */
     void removeDatabase (String db)
     {
         var ns = this._gns(db);

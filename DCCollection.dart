@@ -67,7 +67,7 @@ class DCCollection
 
     List<DCDocument> toList()
     {
-
+        return new List<DCDocument>.from(this._provider.getAll(this._dbName, this._collName));
     }
 
     /**
