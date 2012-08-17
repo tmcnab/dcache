@@ -1,0 +1,189 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>DCCollection Class / dcache Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="dcache" data-type="DCCollection">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../dcache.html">dcache</a> &rsaquo; <a href="../dcache/DCCollection.html">DCCollection</a></div>
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>DCCollection</strong>
+          Class
+        </h2>
+        
+<div class="doc">
+<h2>Represents a grouping of documents</h2>
+</div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="DCCollection">
+<span class="show-code">Code</span>
+new <strong>DCCollection</strong>(<a href="../dcache/DCProvider.html">DCProvider</a> provider, String dbName, String collectionName) <a class="anchor-link" href="#DCCollection"
+              title="Permalink to DCCollection.DCCollection">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+DCCollection (DCProvider provider, String dbName, String collectionName)
+{
+    this._provider = provider;
+    this._dbName = dbName;
+    this._collName = collectionName;
+}
+</pre>
+</div>
+</div>
+<h3>Methods</h3>
+<div class="method"><h4 id="count">
+<span class="show-code">Code</span>
+int <strong>count</strong>() <a class="anchor-link" href="#count"
+              title="Permalink to DCCollection.count">#</a></h4>
+<div class="doc">
+<h2>Returns the number of documents in this collection</h2>
+<pre class="source">
+int count ()
+{
+    return this._provider.count(this._dbName, this._collName);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="insert">
+<span class="show-code">Code</span>
+void <strong>insert</strong>(<a href="../dcache/DCDocument.html">DCDocument</a> doc) <a class="anchor-link" href="#insert"
+              title="Permalink to DCCollection.insert">#</a></h4>
+<div class="doc">
+<h2>Inserts a document into the collection</h2>
+<pre class="source">
+void insert (DCDocument doc)
+{
+    if (!this._provider.containsId(this._dbName, this._collName, doc["_id"])) {
+        this._provider.setItem(this._dbName, this._collName, doc);
+    }
+    else {
+        if (!this._provider.ignorant) {
+            throw new DCException();
+        }
+    }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="query">
+<span class="show-code">Code</span>
+Collection&lt;<a href="../dcache/DCDocument.html">DCDocument</a>&gt; <strong>query</strong>(String db, String coll, bool fn(<a href="../dcache/DCDocument.html">DCDocument</a> doc)) <a class="anchor-link" href="#query"
+              title="Permalink to DCCollection.query">#</a></h4>
+<div class="doc">
+<h2>Queries the collection for documents, returning the documents as a native collection</h2>
+<pre class="source">
+Collection&lt;DCDocument&gt; query (String db, String coll, bool fn(DCDocument doc))
+{
+    return this._provider.query(db, coll, fn);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="remove">
+<span class="show-code">Code</span>
+void <strong>remove</strong>(<a href="../dcache/DCDocument.html">DCDocument</a> doc) <a class="anchor-link" href="#remove"
+              title="Permalink to DCCollection.remove">#</a></h4>
+<div class="doc">
+<h2>Removes a single document from the collection</h2>
+<pre class="source">
+void remove (DCDocument doc)
+{
+    if (!this._provider.containsId(this._dbName, this._collName, doc["_id"])) {
+        this._provider.removeItem(this._dbName, this._collName, doc["_id"]);
+    }
+    else {
+        if (!this._provider.ignorant) {
+            throw new DCException();
+        }
+    }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeAll">
+<span class="show-code">Code</span>
+void <strong>removeAll</strong>() <a class="anchor-link" href="#removeAll"
+              title="Permalink to DCCollection.removeAll">#</a></h4>
+<div class="doc">
+<h2>Removes all documents in this collection</h2>
+<pre class="source">
+void removeAll ()
+{
+    this._provider.removeCollection(this._dbName, this._collName);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="save">
+<span class="show-code">Code</span>
+void <strong>save</strong>(<a href="../dcache/DCDocument.html">DCDocument</a> doc) <a class="anchor-link" href="#save"
+              title="Permalink to DCCollection.save">#</a></h4>
+<div class="doc">
+<h2>Upserts (insert or update) a document into the collection</h2>
+<pre class="source">
+void save (DCDocument doc)
+{
+    this._provider.setItem(this._dbName, this._collName, doc);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toCollection">
+<span class="show-code">Code</span>
+Collection&lt;<a href="../dcache/DCDocument.html">DCDocument</a>&gt; <strong>toCollection</strong>() <a class="anchor-link" href="#toCollection"
+              title="Permalink to DCCollection.toCollection">#</a></h4>
+<div class="doc">
+<h2>Returns all documents in the collection as a native collection</h2>
+<pre class="source">
+Collection&lt;DCDocument&gt; toCollection ()
+{
+    return new List&lt;DCDocument&gt;.from(this._provider.getAll(this._dbName, this._collName));
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="update">
+<span class="show-code">Code</span>
+void <strong>update</strong>(<a href="../dcache/DCDocument.html">DCDocument</a> doc) <a class="anchor-link" href="#update"
+              title="Permalink to DCCollection.update">#</a></h4>
+<div class="doc">
+<p>Updates an existing document in the collection</p>
+<pre class="source">
+void update (DCDocument doc)
+{
+    if (this._provider.containsId(this._dbName, this._collName, doc["_id"])) {
+        this._provider.setItem(this._dbName, this._collName, doc);
+    }
+    else {
+        if (!this._provider.ignorant) {
+            throw new DCException();
+        }
+    }
+}
+</pre>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        
+        <div class="footer">
+          <div>This page was generated at 2012-08-17 13:15:48.159</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

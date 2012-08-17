@@ -63,9 +63,22 @@ class LocalStorageProvider implements DCProvider
         return DCDocument.fromJSON(this._storage[this._gns(db,coll,key)]);
     }
 
-    Collection<DCDocument> query (String db, String coll, String queryString)
+    Collection<DCDocument> query (String db, String coll, bool fn(DCDocument doc))
     {
-        throw new NotImplementedException();
+        var ns = this._gns(db, coll);
+        List<DCDocument> results = new List<DCDocument>();
+
+        this._storage.getKeys().forEach( (docKey)
+        {
+            if (docKey.startsWith(ns)) {
+                var doc = DCDocument.fromJSON(this._storage[docKey]);
+                if(fn(doc)) {
+                  results.add(doc);
+                }
+            }
+        });
+
+        return results;
     }
 
     void setItem (String db, String coll, DCDocument doc)

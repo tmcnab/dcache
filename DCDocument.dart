@@ -1,5 +1,6 @@
 /**
-*
+* The principle data structure of dcache, representing a document
+* ---
 */
 class DCDocument extends Object
 {

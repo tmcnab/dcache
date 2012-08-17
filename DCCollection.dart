@@ -1,5 +1,5 @@
 /**
-* Represents a grouping of dcache documents.
+* Represents a grouping of documents
 * ---
 */
 class DCCollection
@@ -16,7 +16,7 @@ class DCCollection
     }
 
     /**
-    * Returns the number of documents in this [collection].
+    * Returns the number of documents in this collection
     * ---
     */
     int count ()
@@ -25,7 +25,7 @@ class DCCollection
     }
 
     /**
-    * Inserts a document into this [collection] instance.
+    * Inserts a document into the collection
     * ---
     */
     void insert (DCDocument doc)
@@ -40,6 +40,19 @@ class DCCollection
         }
     }
 
+    /**
+    * Queries the collection for documents, returning the documents as a native collection
+    * ---
+    */
+    Collection<DCDocument> query (bool fn(DCDocument doc))
+    {
+        return this._provider.query(this._dbName, this._collName, fn);
+    }
+
+    /**
+    * Removes a single document from the collection
+    * ---
+    */
     void remove (DCDocument doc)
     {
         if (!this._provider.containsId(this._dbName, this._collName, doc["_id"])) {
@@ -52,36 +65,45 @@ class DCCollection
         }
     }
 
+    /**
+    * Removes all documents in this collection
+    * ---
+    */
     void removeAll ()
     {
         this._provider.removeCollection(this._dbName, this._collName);
     }
 
     /**
-    * Upserts a document to this [collection] instance.
+    * Upserts (insert or update) a document into the collection
+    * ---
     */
     void save (DCDocument doc)
     {
         this._provider.setItem(this._dbName, this._collName, doc);
     }
 
-    List<DCDocument> toList()
+    /**
+    * Returns all documents in the collection as a native collection
+    * ---
+    */
+    Collection<DCDocument> toCollection ()
     {
         return new List<DCDocument>.from(this._provider.getAll(this._dbName, this._collName));
     }
 
     /**
-    * Updates an existing [document].
+    * Updates an existing document in the collection
     */
     void update (DCDocument doc)
     {
-      if (this._provider.containsId(this._dbName, this._collName, doc["_id"])) {
-          this._provider.setItem(this._dbName, this._collName, doc);
-      }
-      else {
-          if (!this._provider.ignorant) {
-              throw new DCException();
-          }
-      }
+        if (this._provider.containsId(this._dbName, this._collName, doc["_id"])) {
+            this._provider.setItem(this._dbName, this._collName, doc);
+        }
+        else {
+            if (!this._provider.ignorant) {
+                throw new DCException();
+            }
+        }
     }
 }

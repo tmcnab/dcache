@@ -1,0 +1,170 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>DCProvider Interface / dcache Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="dcache" data-type="DCProvider">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../dcache.html">dcache</a> &rsaquo; <a href="../dcache/DCProvider.html">DCProvider</a></div>
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>DCProvider</strong>
+          Interface
+        </h2>
+        
+<div class="doc">
+<h2>A standard interface for implement dcache document providers.</h2>
+</div>
+<h3>Methods</h3>
+<div class="method"><h4 id="containsId">
+<span class="show-code">Code</span>
+bool <strong>containsId</strong>(String db, String coll, String id) <a class="anchor-link" href="#containsId"
+              title="Permalink to DCProvider.containsId">#</a></h4>
+<div class="doc">
+<h2>Indicates whether or not the document 
+<span class="param">id</span> is in 
+<span class="param">db</span>.
+<span class="param">coll</span></h2>
+<pre class="source">
+bool containsId (String db, String coll, String id);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="count">
+<span class="show-code">Code</span>
+int <strong>count</strong>(String db, String coll) <a class="anchor-link" href="#count"
+              title="Permalink to DCProvider.count">#</a></h4>
+<div class="doc">
+<h2>Returns the number of documents in 
+<span class="param">db</span>.
+<span class="param">coll</span></h2>
+<pre class="source">
+int count (String db, String coll);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getAll">
+<span class="show-code">Code</span>
+Collection&lt;<a href="../dcache/DCDocument.html">DCDocument</a>&gt; <strong>getAll</strong>(String db, String coll) <a class="anchor-link" href="#getAll"
+              title="Permalink to DCProvider.getAll">#</a></h4>
+<div class="doc">
+<h2>Returns every document in 
+<span class="param">db</span>.
+<span class="param">coll</span> as a collection</h2>
+<pre class="source">
+Collection&lt;DCDocument&gt; getAll (String db, String coll);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getItem">
+<span class="show-code">Code</span>
+<a href="../dcache/DCDocument.html">DCDocument</a> <strong>getItem</strong>(String db, String coll, String id) <a class="anchor-link" href="#getItem"
+              title="Permalink to DCProvider.getItem">#</a></h4>
+<div class="doc">
+<h2>Retrieves a document by its 
+<span class="param">id</span> from 
+<span class="param">db</span>.
+<span class="param">coll</span></h2>
+<pre class="source">
+DCDocument getItem (String db, String coll, String id);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="query">
+<span class="show-code">Code</span>
+Collection&lt;<a href="../dcache/DCDocument.html">DCDocument</a>&gt; <strong>query</strong>(String db, String coll, bool fn(<a href="../dcache/DCDocument.html">DCDocument</a> doc)) <a class="anchor-link" href="#query"
+              title="Permalink to DCProvider.query">#</a></h4>
+<div class="doc">
+<h2>Returns a list of documents matched by 
+<span class="param">fn</span> from 
+<span class="param">db</span>.
+<span class="param">coll</span></h2>
+<pre class="source">
+Collection&lt;DCDocument&gt; query (String db, String coll, bool fn(DCDocument doc));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeCollection">
+<span class="show-code">Code</span>
+void <strong>removeCollection</strong>(String db, String coll) <a class="anchor-link" href="#removeCollection"
+              title="Permalink to DCProvider.removeCollection">#</a></h4>
+<div class="doc">
+<h2>Removes a collection of documents from database 
+<span class="param">db</span></h2>
+<pre class="source">
+void removeCollection (String db, String coll);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeDatabase">
+<span class="show-code">Code</span>
+void <strong>removeDatabase</strong>(String db) <a class="anchor-link" href="#removeDatabase"
+              title="Permalink to DCProvider.removeDatabase">#</a></h4>
+<div class="doc">
+<h2>Removes a database</h2>
+<pre class="source">
+void removeDatabase (String db);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeItem">
+<span class="show-code">Code</span>
+void <strong>removeItem</strong>(String db, String coll, String id) <a class="anchor-link" href="#removeItem"
+              title="Permalink to DCProvider.removeItem">#</a></h4>
+<div class="doc">
+<h2>Removes a single document from 
+<span class="param">db</span>.
+<span class="param">coll</span></h2>
+<pre class="source">
+void removeItem (String db, String coll, String id);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="setItem">
+<span class="show-code">Code</span>
+void <strong>setItem</strong>(String db, String coll, <a href="../dcache/DCDocument.html">DCDocument</a> document) <a class="anchor-link" href="#setItem"
+              title="Permalink to DCProvider.setItem">#</a></h4>
+<div class="doc">
+<h2>Stores (upsert) a document in 
+<span class="param">db</span>.
+<span class="param">coll</span></h2>
+<pre class="source">
+void setItem (String db, String coll, DCDocument document);
+</pre>
+</div>
+</div>
+<h3>Fields</h3>
+<div class="field"><h4 id="ignorant">
+<span class="show-code">Code</span>
+bool         <strong>ignorant</strong> <a class="anchor-link"
+            href="#ignorant"
+            title="Permalink to DCProvider.ignorant">#</a>
+        </h4>
+        <div class="doc">
+<h2>An instance property flag if errors should be ignored</h2>
+<pre class="source">
+bool ignorant;
+</pre>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        
+        <div class="footer">
+          <div>This page was generated at 2012-08-17 13:15:48.199</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

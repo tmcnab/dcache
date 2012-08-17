@@ -1,0 +1,148 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>DCDocument Class / dcache Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="dcache" data-type="DCDocument">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../dcache.html">dcache</a> &rsaquo; <a href="../dcache/DCDocument.html">DCDocument</a></div>
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>DCDocument</strong>
+          Class
+        </h2>
+        
+<div class="doc">
+<h2>The principle data structure of dcache, representing a document</h2>
+</div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="DCDocument">
+<span class="show-code">Code</span>
+new <strong>DCDocument</strong>([String id]) <a class="anchor-link" href="#DCDocument"
+              title="Permalink to DCDocument.DCDocument">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+DCDocument ([String id])
+{
+  _data = new Map&lt;String,Dynamic&gt;();
+  if(id != null) {
+    this["_id"] = id;
+  }
+  else {
+    this["_id"] = new Date.now().millisecondsSinceEpoch.toString();
+  }
+}
+</pre>
+</div>
+</div>
+<h3>Static Methods</h3>
+<div class="method"><h4 id="fromJSON">
+<span class="show-code">Code</span>
+<a href="../dcache/DCDocument.html">DCDocument</a> <strong>fromJSON</strong>(String jsonString) <a class="anchor-link" href="#fromJSON"
+              title="Permalink to DCDocument.fromJSON">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+static DCDocument fromJSON (String jsonString)
+{
+  var doc = new DCDocument();
+  doc._data = JSON.parse(jsonString);
+  return doc;
+}
+</pre>
+</div>
+</div>
+<h3>Methods</h3>
+<div class="method"><h4 id="noSuchMethod">
+<span class="show-code">Code</span>
+<strong>noSuchMethod</strong>(String function_name, List args) <a class="anchor-link" href="#noSuchMethod"
+              title="Permalink to DCDocument.noSuchMethod">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+noSuchMethod(String function_name, List args)
+{
+  if (args.length == 0 &amp;&amp; function_name.startsWith("get:"))
+  {
+    var property = function_name.replaceFirst("get:", "");
+    if (this._data.containsKey(property)) {
+      return this[property];
+    }
+  }
+  else if (args.length == 1 &amp;&amp; function_name.startsWith("set:")) {
+    var property = function_name.replaceFirst("set:", "");
+    this[property] = args[0];
+    return this[property];
+  }
+
+  super.noSuchMethod(function_name, args);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="operator">
+<span class="show-code">Code</span>
+<strong>operator []</strong>(key) <a class="anchor-link" href="#operator"
+              title="Permalink to DCDocument.operator []">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+operator [] (key) =&gt; this._data[key];
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="operator">
+<span class="show-code">Code</span>
+<strong>operator []=</strong>(key, value) <a class="anchor-link" href="#operator"
+              title="Permalink to DCDocument.operator []=">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+operator []= (key,value) =&gt; this._data[key] = value;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toMap">
+<span class="show-code">Code</span>
+Map <strong>toMap</strong>() <a class="anchor-link" href="#toMap"
+              title="Permalink to DCDocument.toMap">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+Map toMap() =&gt; new Map.from(this._data);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<span class="show-code">Code</span>
+<strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to DCDocument.toString">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+toString() =&gt; JSON.stringify(this._data);
+</pre>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        
+        <div class="footer">
+          <div>This page was generated at 2012-08-17 13:15:48.231</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

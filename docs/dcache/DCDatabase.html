@@ -1,0 +1,78 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>DCDatabase Class / dcache Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="dcache" data-type="DCDatabase">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../dcache.html">dcache</a> &rsaquo; <a href="../dcache/DCDatabase.html">DCDatabase</a></div>
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>DCDatabase</strong>
+          Class
+        </h2>
+        
+<div class="doc">
+<h2>Represents a collection of named dcache collections</h2>
+</div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="DCDatabase">
+<span class="show-code">Code</span>
+new <strong>DCDatabase</strong>(<a href="../dcache/DCProvider.html">DCProvider</a> prov, String db_name) <a class="anchor-link" href="#DCDatabase"
+              title="Permalink to DCDatabase.DCDatabase">#</a></h4>
+<div class="doc">
+
+<pre class="source">
+DCDatabase (DCProvider prov, String db_name)
+{
+    this._source = prov;
+    this._dbname = db_name;
+}
+</pre>
+</div>
+</div>
+<h3>Methods</h3>
+<div class="method"><h4 id="getCollection">
+<span class="show-code">Code</span>
+<a href="../dcache/DCCollection.html">DCCollection</a> <strong>getCollection</strong>(String name) <a class="anchor-link" href="#getCollection"
+              title="Permalink to DCDatabase.getCollection">#</a></h4>
+<div class="doc">
+<h2>Gets a <code>collection</code> specified by 
+<span class="param">name</span></h2>
+<pre class="source">
+DCCollection getCollection (String name) =&gt; new DCCollection(this._source, this._dbname, name);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="operator">
+<span class="show-code">Code</span>
+<a href="../dcache/DCCollection.html">DCCollection</a> <strong>operator []</strong>(String name) <a class="anchor-link" href="#operator"
+              title="Permalink to DCDatabase.operator []">#</a></h4>
+<div class="doc">
+<h2>Gets a collection using the square bracket operators. See also <a class="crossref" href="../dcache/DCDatabase.html#getCollection">getCollection</a></h2>
+<pre class="source">
+DCCollection operator [] (String name) =&gt; this.getCollection(name);
+</pre>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        
+        <div class="footer">
+          <div>This page was generated at 2012-08-17 13:15:48.214</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
